@@ -1,0 +1,9 @@
+{
+  "last_report_path": "/home/hermes/.hermes/profiles/yanqing/logs/curator/20260608-083930",
+  "last_run_at": "2026-06-08T08:39:30.342265+00:00",
+  "last_run_duration_seconds": 112.330245,
+  "last_run_summary": "auto: no changes; llm: Consolidation complete. Here's the full report:\n\n---\n\n## Curator Summary\n\n**Source set:** 4 agent-created skills across 3 categories (`fde/`, `yuanbao/`, `devops/`)\n\n**Cluster found:** The two `fde/` category skills — `agent-memory-system` …\narchived 1 skill(s):\n  • agent-memory-system → fde-external-absorption\nfull report: hermes curator status\nkeep an umbrella stable: hermes curator pin fde-external-absorption",
+  "last_run_summary_shown_at": null,
+  "paused": false,
+  "run_count": 2
+}

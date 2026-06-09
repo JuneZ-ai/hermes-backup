@@ -1,0 +1,212 @@
+{
+  "jobs": [
+    {
+      "id": "34e01c231bfd",
+      "name": "Obsidian\u5582\u6599\u81ea\u52a8\u52a0\u5de5",
+      "prompt": "\u626b\u63cf Obsidian \u77e5\u8bc6\u5e93\u7684 01-\u4fe1\u606f\u6d41/ \u76ee\u5f55\uff0c\u627e\u5230\u6240\u6709 status: raw \u7684\u672a\u5904\u7406\u7d20\u6750\u6587\u4ef6\uff0c\u9010\u4e2a\u8bfb\u53d6\u5185\u5bb9\uff0c\u6309 obsidian-ingestion-pipeline \u6280\u80fd\u7684\u5206\u7c7b\u89c4\u5219\u5224\u5b9a\u5f52\u5c5e\u6a21\u5757\uff0c\u63d0\u70bc\u6838\u5fc3\u6982\u5ff5\u5e76\u521b\u5efa\u65b0\u7b14\u8bb0\uff0c\u6700\u540e\u5c06\u7d20\u6750\u6807\u8bb0\u4e3a status: processed\u3002\u5b8c\u6210\u540e\u6c47\u62a5\u5904\u7406\u4e86\u54ea\u4e9b\u7d20\u6750\u3002",
+      "skills": [
+        "obsidian-ingestion-pipeline"
+      ],
+      "skill": "obsidian-ingestion-pipeline",
+      "model": null,
+      "provider": null,
+      "base_url": null,
+      "script": null,
+      "no_agent": false,
+      "context_from": null,
+      "schedule": {
+        "kind": "cron",
+        "expr": "0 10 * * *",
+        "display": "0 10 * * *"
+      },
+      "schedule_display": "0 10 * * *",
+      "repeat": {
+        "times": null,
+        "completed": 2
+      },
+      "enabled": true,
+      "state": "scheduled",
+      "paused_at": null,
+      "paused_reason": null,
+      "created_at": "2026-05-20T18:44:09.411001+08:00",
+      "next_run_at": "2026-05-25T10:00:00+08:00",
+      "last_run_at": "2026-05-24T10:37:01.876971+08:00",
+      "last_status": "ok",
+      "last_error": null,
+      "last_delivery_error": null,
+      "deliver": "origin",
+      "origin": {
+        "platform": "feishu",
+        "chat_id": "oc_47168d6fd212027683aed7339b9356bc",
+        "chat_name": "oc_47168d6fd212027683aed7339b9356bc",
+        "thread_id": null
+      },
+      "enabled_toolsets": null,
+      "workdir": null
+    },
+    {
+      "id": "91f3b9ba5d92",
+      "name": "github-tracker-monitor",
+      "prompt": "GitHub repo change monitor \u2014 no LLM needed",
+      "skills": [],
+      "skill": null,
+      "model": null,
+      "provider": null,
+      "base_url": null,
+      "script": "monitor-github-tracked.py",
+      "no_agent": true,
+      "context_from": null,
+      "schedule": {
+        "kind": "interval",
+        "minutes": 720,
+        "display": "every 720m"
+      },
+      "schedule_display": "every 720m",
+      "repeat": {
+        "times": null,
+        "completed": 0
+      },
+      "enabled": true,
+      "state": "scheduled",
+      "paused_at": null,
+      "paused_reason": null,
+      "created_at": "2026-05-21T16:53:02.862155+08:00",
+      "next_run_at": "2026-05-24T22:36:03.082972+08:00",
+      "last_run_at": null,
+      "last_status": null,
+      "last_error": null,
+      "last_delivery_error": null,
+      "deliver": "feishu",
+      "origin": null,
+      "enabled_toolsets": null,
+      "workdir": null
+    },
+    {
+      "id": "08dd2185f5ff",
+      "name": "\u77e5\u8bc6\u5e93\u6bcf\u5468\u5065\u5eb7\u68c0\u67e5",
+      "prompt": "\u6bcf\u5468\u81ea\u52a8 lint \u68c0\u67e5\u77e5\u8bc6\u5e93\u5065\u5eb7\u72b6\u6001",
+      "skills": [],
+      "skill": null,
+      "model": null,
+      "provider": null,
+      "base_url": null,
+      "script": "vault-lint.sh",
+      "no_agent": true,
+      "context_from": null,
+      "schedule": {
+        "kind": "cron",
+        "expr": "0 9 * * 1",
+        "display": "0 9 * * 1"
+      },
+      "schedule_display": "0 9 * * 1",
+      "repeat": {
+        "times": null,
+        "completed": 0
+      },
+      "enabled": true,
+      "state": "scheduled",
+      "paused_at": null,
+      "paused_reason": null,
+      "created_at": "2026-05-21T18:25:43.809312+08:00",
+      "next_run_at": "2026-05-25T09:00:00+08:00",
+      "last_run_at": null,
+      "last_status": null,
+      "last_error": null,
+      "last_delivery_error": null,
+      "deliver": "origin",
+      "origin": {
+        "platform": "feishu",
+        "chat_id": "oc_47168d6fd212027683aed7339b9356bc",
+        "chat_name": "oc_47168d6fd212027683aed7339b9356bc",
+        "thread_id": null
+      },
+      "enabled_toolsets": null,
+      "workdir": null
+    },
+    {
+      "id": "9572515a2b33",
+      "name": "\u6bcf\u65e5\u4fdd\u5e95\u8bb0\u5f55",
+      "prompt": "\u8fd9\u662f\u6bcf\u65e5\u4fdd\u5e95cron job\u3002\u68c0\u67e5\u98de\u4e66\u591a\u7ef4\u8868\u683c\u300c\ud83e\udde0 \u7b2c\u4e8c\u5927\u8111\u642d\u5efa\u65e5\u5fd7\u300dNzuPbMtMFa0wUusVQKwc69lenib \u4e2d\u300c\u6bcf\u65e5\u8bb0\u5f55\u300d\u5b50\u8868\uff08tblTLllADiUdhL6e\uff09\u4eca\u5929\u662f\u5426\u6709\u8bb0\u5f55\u3002\u5982\u679c\u5f53\u5929\u65e0\u4efb\u4f55\u8bb0\u5f55\uff0c\u6dfb\u52a0\u4e00\u6761\u7a7a\u767d\u8bb0\u5f55\uff08\u4ec5\u516c\u5386\u65f6\u95f4+\u519c\u5386+\u8282\u6c14+\u5e72\u652f+\u9ec4\u5386\u5b9c\u5fcc\uff0c\u8bb0\u5f55\u5185\u5bb9\u586b\"\u4eca\u65e5\u65e0\u64cd\u4f5c\"\u3001\u7c7b\u578b\u7559\"\ud83d\udcbc \u5de5\u4f5c\"\uff09\u3002\n\n\u540c\u65f6\u68c0\u67e5\u300c\u642d\u5efa\u65e5\u5fd7\u300d\u5b50\u8868\uff08tbllV9WgN64Zwput\uff09\u4eca\u5929\u662f\u5426\u6709\u8bb0\u5f55\uff0c\u5982\u679c\u4e5f\u65e0\uff0c\u52a0\u4e00\u6761\"\u4eca\u65e5\u65e0\u64cd\u4f5c\"\u8bb0\u5f55\uff08\u64cd\u4f5c\u5185\u5bb9=\"\u4eca\u65e5\u65e0\u77e5\u8bc6\u5e93\u64cd\u4f5c\"\u3001\u9886\u57df=\"\u5de5\u5177\u914d\u7f6e\"\u3001\u65f6\u95f4=\u4eca\u5929\u3001\u72b6\u6001=\"\u2705\u5df2\u5b8c\u6210\"\uff09\u3002\n\n\u4f7f\u7528\u73af\u5883\u53d8\u91cf FEISHU_APP_ID \u548c FEISHU_APP_SECRET \u83b7\u53d6token\u3002DateTime\u4f7f\u7528UTC+8\u5f53\u592900:00:00\u7684\u6beb\u79d2\u65f6\u95f4\u6233\u3002\u519c\u5386\u4fe1\u606f\u7528lunar-python\u5e93\u8ba1\u7b97\uff08pip install lunar-python\uff09\u3002",
+      "skills": [],
+      "skill": null,
+      "model": null,
+      "provider": null,
+      "base_url": null,
+      "script": "daily_blank_record.py",
+      "no_agent": true,
+      "context_from": null,
+      "schedule": {
+        "kind": "cron",
+        "expr": "0 22 * * *",
+        "display": "0 22 * * *"
+      },
+      "schedule_display": "0 22 * * *",
+      "repeat": {
+        "times": null,
+        "completed": 0
+      },
+      "enabled": true,
+      "state": "scheduled",
+      "paused_at": null,
+      "paused_reason": null,
+      "created_at": "2026-05-23T22:48:38.214677+08:00",
+      "next_run_at": "2026-05-24T22:00:00+08:00",
+      "last_run_at": null,
+      "last_status": null,
+      "last_error": null,
+      "last_delivery_error": null,
+      "deliver": "origin",
+      "origin": {
+        "platform": "feishu",
+        "chat_id": "oc_47168d6fd212027683aed7339b9356bc",
+        "chat_name": "oc_47168d6fd212027683aed7339b9356bc",
+        "thread_id": null
+      },
+      "enabled_toolsets": null,
+      "workdir": null
+    },
+    {
+      "id": "55dfc0cd0de7",
+      "name": "\u516d\u97ec\u667a\u8111-\u77e5\u8bc6\u65b0\u9c9c\u5ea6\u5de1\u68c0",
+      "prompt": "## \u4efb\u52a1\uff1a\u516d\u97ec\u667a\u8111\u77e5\u8bc6\u65b0\u9c9c\u5ea6\u5de1\u68c0\n\n\u8bfb\u53d6\u516d\u97ec\u667a\u8111\u7684 SKILL.md \u4e2d\u7684\u77e5\u8bc6\u65b0\u9c9c\u5ea6\u8ffd\u8e2a\u8868\uff08\u6a21\u5757E.3\uff09\uff0c\u8ba1\u7b97\u6bcf\u4e2a\u7ec4\u4ef6\u5f53\u524d\u7684 freshness_score\u3002\n\n### \u8ba1\u7b97\u89c4\u5219\n- \u4e0d\u673d\u578b\uff1ascore \u6052\u4e3a 100\n- \u7406\u8bba\u578b\uff08\u534a\u8870\u671f5\u5e74\uff09\uff1ascore = 100 \u00d7 (0.5)^(\u7ecf\u8fc7\u5e74\u6570 / 5)\n- \u534a\u7a33\u5b9a\u578b\uff08\u534a\u8870\u671f2\u5e74\uff09\uff1ascore = 100 \u00d7 (0.5)^(\u7ecf\u8fc7\u5e74\u6570 / 2)\n- \u65f6\u6548\u578b\uff08\u534a\u8870\u671f6\u4e2a\u6708\uff09\uff1ascore = 100 \u00d7 (0.5)^(\u7ecf\u8fc7\u6708\u6570 / 6)\n- \u901f\u673d\u578b\uff08\u534a\u8870\u671f1\u4e2a\u6708\uff09\uff1ascore = 100 \u00d7 (0.5)^(\u7ecf\u8fc7\u6708\u6570 / 1)\n\n### \u8f93\u51fa\u8981\u6c42\n1. \u5217\u51fa\u6240\u6709\u65b0\u9c9c\u5ea6\u5df2\u964d\u81f3 \ud83d\udfe0\u8001\u5316\uff0820-49\uff09\u6216 \ud83d\udd34\u8150\u574f\uff080-19\uff09\u7684\u7ec4\u4ef6\n2. \u5217\u51fa\u63a5\u4e0b\u67651\u4e2a\u6708\u5185\u5c06\u8fdb\u5165\u8001\u5316\u7684\u7ec4\u4ef6\uff08\u9884\u8ba1\u5206\u6570\u5c06\u964d\u81f350\u4ee5\u4e0b\uff09\n3. \u5bf9\u6bcf\u4e2a\u95ee\u9898\u7ec4\u4ef6\u7ed9\u51fa\u66f4\u65b0\u5efa\u8bae\n\n\u5982\u679c\u6ca1\u6709\u4efb\u4f55\u7ec4\u4ef6\u51fa\u95ee\u9898\uff0c\u8f93\u51fa [SILENT]\u3002\n\n### \u53c2\u8003\n- \u6280\u80fd\u8def\u5f84\uff1a/mnt/c/Users/18502/.workbuddy/skills/\u516d\u97ec\u667a\u8111/SKILL.md\n- \u65b0\u9c9c\u5ea6\u8ffd\u8e2a\u8868\u5728 \u6a21\u5757 E.3\n- \u66f4\u65b0\u89e6\u53d1\u6e05\u5355\u5728 \u6a21\u5757 E.5",
+      "skills": [],
+      "skill": null,
+      "model": null,
+      "provider": null,
+      "base_url": null,
+      "script": null,
+      "no_agent": false,
+      "context_from": null,
+      "schedule": {
+        "kind": "cron",
+        "expr": "0 8 * * 1",
+        "display": "0 8 * * 1"
+      },
+      "schedule_display": "0 8 * * 1",
+      "repeat": {
+        "times": null,
+        "completed": 0
+      },
+      "enabled": true,
+      "state": "scheduled",
+      "paused_at": null,
+      "paused_reason": null,
+      "created_at": "2026-05-24T14:51:36.354711+08:00",
+      "next_run_at": "2026-05-25T08:00:00+08:00",
+      "last_run_at": null,
+      "last_status": null,
+      "last_error": null,
+      "last_delivery_error": null,
+      "deliver": "origin",
+      "origin": {
+        "platform": "feishu",
+        "chat_id": "oc_47168d6fd212027683aed7339b9356bc",
+        "chat_name": "oc_47168d6fd212027683aed7339b9356bc",
+        "thread_id": null
+      },
+      "enabled_toolsets": null,
+      "workdir": null
+    }
+  ],
+  "updated_at": "2026-05-24T14:51:36.363665+08:00"
+}

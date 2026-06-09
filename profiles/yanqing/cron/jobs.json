@@ -1,0 +1,47 @@
+{
+  "jobs": [
+    {
+      "id": "35ae3c98874f",
+      "name": "\u4e09\u8868\u540c\u6b65\uff1a\u642d\u5efa\u65e5\u5fd7+\u6bcf\u65e5\u8bb0\u5f55+\u6536\u85cf\u968f\u60f3\u5f55",
+      "prompt": "\u6bcf\u65e5\u5b9a\u65f6\u4efb\u52a1\uff1a\u8fd0\u884c\u4e09\u8868\u540c\u6b65\u811a\u672c\uff0c\u5c06OB vault\u7684\u642d\u5efa\u65e5\u5fd7\u3001\u6bcf\u65e5\u8bb0\u5f55\u3001\u6536\u85cf\u968f\u60f3\u5f55\u540c\u6b65\u5230\u98de\u4e66Base\u3002\u5373\u4fbf\u65e0\u65b0\u5185\u5bb9\u4e5f\u81ea\u52a8\u7559\u75d5\u3002\u8fd0\u884c\u5b8c\u5411\u7528\u6237\u62a5\u544a\u6458\u8981\u3002",
+      "skills": [],
+      "skill": null,
+      "model": null,
+      "provider": null,
+      "base_url": null,
+      "script": "sync-all-to-feishu.py",
+      "no_agent": false,
+      "context_from": null,
+      "schedule": {
+        "kind": "cron",
+        "expr": "0 21 * * *",
+        "display": "0 21 * * *"
+      },
+      "schedule_display": "0 21 * * *",
+      "repeat": {
+        "times": null,
+        "completed": 13
+      },
+      "enabled": true,
+      "state": "scheduled",
+      "paused_at": null,
+      "paused_reason": null,
+      "created_at": "2026-05-26T17:24:33.180759+08:00",
+      "next_run_at": "2026-06-09T21:00:00+08:00",
+      "last_run_at": "2026-06-08T21:06:47.988889+08:00",
+      "last_status": "ok",
+      "last_error": null,
+      "last_delivery_error": null,
+      "deliver": "origin",
+      "origin": {
+        "platform": "feishu",
+        "chat_id": "oc_16c31bbc00df22907e87a3e98402b59a",
+        "chat_name": "oc_16c31bbc00df22907e87a3e98402b59a",
+        "thread_id": null
+      },
+      "enabled_toolsets": null,
+      "workdir": "/home/hermes/.hermes/profiles/yanqing"
+    }
+  ],
+  "updated_at": "2026-06-08T21:06:48.021160+08:00"
+}

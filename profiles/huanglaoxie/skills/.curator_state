@@ -1,0 +1,9 @@
+{
+  "last_report_path": "/home/hermes/.hermes/profiles/huanglaoxie/logs/curator/20260608-084109",
+  "last_run_at": "2026-06-08T08:41:09.306780+00:00",
+  "last_run_duration_seconds": 34.843697,
+  "last_run_summary": "auto: no changes; llm: ## Curator Summary\n\nI examined the full landscape of 84 skills, of which only 2 are agent-created (the rest are bundled/hub-installed and off-limits per rule 1). Here's the assessment:\n\n### Skills Reviewed\n\n1. **`cross-border-payments`** (p…",
+  "last_run_summary_shown_at": null,
+  "paused": false,
+  "run_count": 2
+}

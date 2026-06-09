@@ -1,0 +1,86 @@
+model:
+  default: deepseek-v4-flash
+  provider: deepseek
+  api_key_env: DEEPSEEK_API_KEY
+providers:
+  deepseek:
+    api_key_env: DEEPSEEK_API_KEY
+    base_url: https://api.deepseek.com
+    models:
+    - deepseek-v4-flash
+    - deepseek-v4-pro
+fallback_providers:
+- provider: deepseek
+  models:
+  - deepseek-v4-pro
+  activation:
+    mode: sequential
+    min_priority: 1
+agent:
+  max_turns: 90
+  gateway_timeout: 1800
+  api_max_retries: 3
+  disabled_toolsets:
+  - terminal
+  - browser
+  - delegation
+  - cronjob
+  - tts
+  - video
+  - video_gen
+  - spotify
+  - homeassistant
+  - computer_use
+  - kanban
+auxiliary:
+  vision:
+    provider: custom
+    model: qwen3.5-omni-plus
+    base_url: https://dashscope.aliyuncs.com/compatible-mode/v1
+    api_key_env: DASHSCOPE_API_KEY
+    timeout: 120
+    extra_body: {}
+    download_timeout: 30
+  web_extract:
+    provider: auto
+    model: ''
+    base_url: ''
+    api_key: ''
+    timeout: 360
+    extra_body: {}
+  compression:
+    provider: auto
+    model: ''
+    base_url: ''
+    api_key: ''
+    timeout: 120
+    extra_body: {}
+  session_search:
+    provider: auto
+    model: ''
+    base_url: ''
+    api_key: ''
+    timeout: 30
+    extra_body: {}
+    max_concurrency: 3
+  approval:
+    provider: auto
+    model: ''
+    base_url: ''
+    api_key: ''
+    timeout: 30
+    extra_body: {}
+  title_generation:
+    provider: auto
+    model: ''
+    base_url: ''
+    api_key: ''
+    timeout: 30
+    extra_body: {}
+display:
+  compact: false
+  personality: kawaii
+  language: zh
+onboarding:
+  seen:
+    busy_input_prompt: true

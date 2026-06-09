@@ -1,0 +1,9 @@
+{
+  "last_report_path": "/home/hermes/.hermes/profiles/junis/logs/curator/20260607-095412",
+  "last_run_at": "2026-06-07T09:54:12.849334+00:00",
+  "last_run_duration_seconds": 146.932701,
+  "last_run_summary": "auto: no changes; llm: Both consolidations complete. Here's the summary:\n\n---\n\n## Consolidation Report\n\n### Clusters processed\n\n**Cluster 1: Vault audit skills** — `vault-original-text-audit` (use=0, activity=1) was a narrow extraction of knowledge-architecture's…\narchived 2 skill(s):\n  • multi-agent-team-design → multi-bot-persona\n  • vault-original-text-audit → knowledge-architecture\nfull report: hermes curator status\nkeep an umbrella stable: hermes curator pin knowledge-architecture",
+  "last_run_summary_shown_at": null,
+  "paused": false,
+  "run_count": 3
+}

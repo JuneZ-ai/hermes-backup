@@ -1,0 +1,47 @@
+{
+  "jobs": [
+    {
+      "id": "35ae3c98874f",
+      "name": "\u7b2c\u4e8c\u5927\u8111\u642d\u5efa\u65e5\u5fd7\u2192\u98de\u4e66\u540c\u6b65",
+      "prompt": "\u6bcf\u65e5\u5b9a\u65f6\u4efb\u52a1\uff1a\u8fd0\u884c\u540c\u6b65\u811a\u672c\uff0c\u5c06 OB vault \u7684\u642d\u5efa\u65e5\u5fd7\u65b0\u589e\u6761\u76ee\u5199\u5165\u98de\u4e66 Base\u3002",
+      "skills": [],
+      "skill": null,
+      "model": null,
+      "provider": null,
+      "base_url": null,
+      "script": "sync-log-to-feishu.py",
+      "no_agent": false,
+      "context_from": null,
+      "schedule": {
+        "kind": "cron",
+        "expr": "0 21 * * *",
+        "display": "0 21 * * *"
+      },
+      "schedule_display": "0 21 * * *",
+      "repeat": {
+        "times": null,
+        "completed": 12
+      },
+      "enabled": true,
+      "state": "scheduled",
+      "paused_at": null,
+      "paused_reason": null,
+      "created_at": "2026-05-26T17:24:33.180759+08:00",
+      "next_run_at": "2026-06-08T21:00:00+08:00",
+      "last_run_at": "2026-06-07T21:39:52.624572+08:00",
+      "last_status": "ok",
+      "last_error": null,
+      "last_delivery_error": null,
+      "deliver": "origin",
+      "origin": {
+        "platform": "feishu",
+        "chat_id": "oc_16c31bbc00df22907e87a3e98402b59a",
+        "chat_name": "oc_16c31bbc00df22907e87a3e98402b59a",
+        "thread_id": null
+      },
+      "enabled_toolsets": null,
+      "workdir": "/home/hermes/.hermes/profiles/yanqing"
+    }
+  ],
+  "updated_at": "2026-06-07T21:39:52.625443+08:00"
+}
