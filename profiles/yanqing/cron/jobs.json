@@ -20,15 +20,15 @@
       "schedule_display": "0 21 * * *",
       "repeat": {
         "times": null,
-        "completed": 13
+        "completed": 19
       },
       "enabled": true,
       "state": "scheduled",
       "paused_at": null,
       "paused_reason": null,
       "created_at": "2026-05-26T17:24:33.180759+08:00",
-      "next_run_at": "2026-06-09T21:00:00+08:00",
-      "last_run_at": "2026-06-08T21:06:47.988889+08:00",
+      "next_run_at": "2026-06-15T21:00:00+08:00",
+      "last_run_at": "2026-06-14T21:13:33.691930+08:00",
       "last_status": "ok",
       "last_error": null,
       "last_delivery_error": null,
@@ -41,7 +41,49 @@
       },
       "enabled_toolsets": null,
       "workdir": "/home/hermes/.hermes/profiles/yanqing"
+    },
+    {
+      "id": "e724bf372b0e",
+      "name": "bazi-daily-upload",
+      "prompt": "\u516b\u5b57\u5185\u5bb9\u53d1\u5e03\u7ba1\u7ebf\u2014\u2014\u71d5\u9752\u6267\u884c\u73af\u8282\u3002\n\n\u6267\u884c\u6b65\u9aa4\uff1a\n1. \u68c0\u67e5 ~/.hermes/profiles/yanqing/cron/output/ \u4e0b\u662f\u5426\u6709\u4eca\u5929\u7684\u53d1\u5e03\u7a3f\u6587\u4ef6\uff08\u547d\u540d\u89c4\u5219\uff1abazi-daily-YYYY-MM-DD.md \u6216\u7c7b\u4f3c\uff09\n2. \u5982\u679c\u6ca1\u6709\u4eca\u5929\u7684\u6587\u4ef6\uff0c\u8bf4\u660e\u9c81\u73ed\u8fd8\u6ca1\u4ea7\u51fa\uff0c\u8df3\u8fc7\u672c\u6b21\u6267\u884c\uff0c\u7ed9\u6211\u4e00\u6761\u6d88\u606f\u544a\u77e5\"\u4eca\u65e5\u65e0\u53d1\u5e03\u7a3f\uff0c\u8df3\u8fc7\"\n3. \u5982\u679c\u6709\uff0c\u8bfb\u53d6\u8be5\u6587\u4ef6\u5185\u5bb9\n4. \u5c06\u8be5\u6587\u4ef6\u4e0a\u4f20\u5230\u98de\u4e66\u4e91\u76d8\uff08\u7528 lark-cli drive +upload\uff09\n5. \u5c06\u6587\u4ef6\u5185\u5bb9\u548c\u4e91\u76d8\u94fe\u63a5\u4e00\u8d77\u79c1\u4fe1\u53d1\u9001\u7ed9\u7528\u6237\n\n\u98de\u4e66\u76ee\u6807\uff1a\u5f53\u524d\u8fd9\u4e2a\u98de\u4e66DM\u5bf9\u8bdd\uff08\u7528\u6237\u662f ou_932c7c2037e1e6bce7e93191dd639c70\uff09\n\n\u6ce8\u610f\uff1a\u751f\u56fePrompt\u5728\u6587\u4ef6\u91cc\uff0c\u7528\u6237\u9700\u8981\u62ff\u53bb\u7528GPT\u751f\u56fe\u3002\u6d88\u606f\u8981\u7b80\u6d01\uff0c\u5305\u542b\uff1a\n- \u6587\u4ef6\u5df2\u4e0a\u4f20\u4e91\u76d8 + \u94fe\u63a5\n- \u751f\u56fePrompt\uff08\u76f4\u63a5\u8d34\u51fa\u6765\uff0c\u7528\u6237\u65b9\u4fbf\u590d\u5236\uff09\n- \u53cc\u8bedCaption",
+      "skills": [],
+      "skill": null,
+      "model": null,
+      "provider": null,
+      "base_url": null,
+      "script": null,
+      "no_agent": false,
+      "context_from": null,
+      "schedule": {
+        "kind": "cron",
+        "expr": "50 9 * * *",
+        "display": "50 9 * * *"
+      },
+      "schedule_display": "50 9 * * *",
+      "repeat": {
+        "times": null,
+        "completed": 2
+      },
+      "enabled": true,
+      "state": "scheduled",
+      "paused_at": null,
+      "paused_reason": null,
+      "created_at": "2026-06-12T13:34:47.983163+08:00",
+      "next_run_at": "2026-06-15T09:50:00+08:00",
+      "last_run_at": "2026-06-14T09:51:37.427834+08:00",
+      "last_status": "ok",
+      "last_error": null,
+      "last_delivery_error": null,
+      "deliver": "origin",
+      "origin": {
+        "platform": "feishu",
+        "chat_id": "oc_16c31bbc00df22907e87a3e98402b59a",
+        "chat_name": "oc_16c31bbc00df22907e87a3e98402b59a",
+        "thread_id": null
+      },
+      "enabled_toolsets": null,
+      "workdir": null
     }
   ],
-  "updated_at": "2026-06-08T21:06:48.021160+08:00"
+  "updated_at": "2026-06-14T21:13:33.707684+08:00"
 }

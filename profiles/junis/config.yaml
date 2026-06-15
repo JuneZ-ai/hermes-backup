@@ -14,6 +14,13 @@ providers:
     base_url: https://api.stepfun.com/v1
     models:
     - step-3.5-flash
+  dashscope:
+    api_key_env: DASHSCOPE_API_KEY
+    base_url: https://dashscope.aliyuncs.com/compatible-mode/v1
+    models:
+    - qwen3.7-max
+    - qwen3.7-plus
+    - qwen3.7-omni-plus
 fallback_providers:
 - provider: deepseek
   models:
@@ -63,7 +70,7 @@ terminal:
   persistent_shell: true
 web:
   backend: ''
-  search_backend: ''
+  search_backend: tavily
   extract_backend: ''
 browser:
   inactivity_timeout: 120
@@ -131,14 +138,13 @@ bedrock:
     trace: disabled
 auxiliary:
   vision:
-    provider: custom
-    model: qwen3.5-omni-plus
+    provider: dashscope
+    model: qwen3.7-plus
     base_url: https://dashscope.aliyuncs.com/compatible-mode/v1
     api_key: ''
     timeout: 120
     extra_body: {}
     download_timeout: 30
-    api_key_env: DASHSCOPE_API_KEY
   web_extract:
     provider: auto
     model: ''
@@ -370,9 +376,14 @@ approvals:
   mcp_reload_confirm: true
   destructive_slash_confirm: true
 command_allowlist:
-- delete in root path
-- script execution via heredoc
+- recursive delete
 - script execution via -e/-c flag
+- overwrite system file via redirection
+- SQL DELETE without WHERE
+- overwrite project env/config via redirection
+- script execution via heredoc
+- stop/restart system service
+- delete in root path
 quick_commands: {}
 hooks: {}
 hooks_auto_accept: false
@@ -465,6 +476,13 @@ mcp_servers:
     - '@modelcontextprotocol/server-github'
     env:
       GITHUB_PERSONAL_ACCESS_TOKEN: ghp_wr...d1XQ
+  tavily:
+    command: npx
+    args:
+    - -y
+    - tavily-mcp@latest
+    env:
+      TAVILY_API_KEY: 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
 
 # ── Fallback Model ────────────────────────────────────────────────────
 # Automatic provider failover when primary is unavailable.

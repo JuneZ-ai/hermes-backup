@@ -371,6 +371,8 @@ approvals:
   mcp_reload_confirm: true
   destructive_slash_confirm: true
 command_allowlist:
+- overwrite project env/config via redirection
+- SQL DELETE without WHERE
 - script execution via -e/-c flag
 - delete in root path
 quick_commands: {}
@@ -445,6 +447,13 @@ mcp_servers:
     command: python3.14
     args:
     - /home/hermes/.hermes/profiles/yanqing/scripts/hybrid-memory/mcp_server.py
+  apify:
+    command: npx
+    args:
+    - -y
+    - '@apify/actors-mcp-server'
+    env:
+      APIFY_TOKEN: ${APIFY_TOKEN}
 
 # ── Fallback Model ────────────────────────────────────────────────────
 # Automatic provider failover when primary is unavailable.

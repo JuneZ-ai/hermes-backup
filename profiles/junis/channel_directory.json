@@ -1,0 +1,90 @@
+{
+  "updated_at": "2026-06-15T08:55:17.698164",
+  "platforms": {
+    "telegram": [],
+    "discord": [],
+    "whatsapp": [],
+    "slack": [],
+    "signal": [],
+    "mattermost": [],
+    "matrix": [],
+    "homeassistant": [],
+    "email": [],
+    "sms": [],
+    "dingtalk": [],
+    "msgraph_webhook": [],
+    "feishu": [
+      {
+        "id": "oc_47168d6fd212027683aed7339b9356bc",
+        "name": "oc_47168d6fd212027683aed7339b9356bc",
+        "type": "dm",
+        "thread_id": null
+      },
+      {
+        "id": "oc_a57651e58047606b3d8f6231ebb45f49",
+        "name": "六韬工作室",
+        "type": "group",
+        "thread_id": null
+      },
+      {
+        "id": "oc_47168d6fd212027683aed7339b9356bc:om_x100b6d16ddfc90b8b32c2a7221bdeff",
+        "name": "oc_47168d6fd212027683aed7339b9356bc / topic om_x100b6d16ddfc90b8b32c2a7221bdeff",
+        "type": "dm",
+        "thread_id": "om_x100b6d16ddfc90b8b32c2a7221bdeff"
+      },
+      {
+        "id": "oc_47168d6fd212027683aed7339b9356bc:omt_1947a1fa37ce9c9e",
+        "name": "oc_47168d6fd212027683aed7339b9356bc / topic omt_1947a1fa37ce9c9e",
+        "type": "dm",
+        "thread_id": "omt_1947a1fa37ce9c9e"
+      },
+      {
+        "id": "oc_47168d6fd212027683aed7339b9356bc:om_x100b6db9900888a4c371c2c63dc3cd3",
+        "name": "oc_47168d6fd212027683aed7339b9356bc / topic om_x100b6db9900888a4c371c2c63dc3cd3",
+        "type": "dm",
+        "thread_id": "om_x100b6db9900888a4c371c2c63dc3cd3"
+      },
+      {
+        "id": "oc_47168d6fd212027683aed7339b9356bc:om_x100b6da52066c8e8c05c3cd62ff6dbd",
+        "name": "oc_47168d6fd212027683aed7339b9356bc / topic om_x100b6da52066c8e8c05c3cd62ff6dbd",
+        "type": "dm",
+        "thread_id": "om_x100b6da52066c8e8c05c3cd62ff6dbd"
+      },
+      {
+        "id": "oc_47168d6fd212027683aed7339b9356bc:omt_194c9e23924b9ba9",
+        "name": "oc_47168d6fd212027683aed7339b9356bc / topic omt_194c9e23924b9ba9",
+        "type": "dm",
+        "thread_id": "omt_194c9e23924b9ba9"
+      },
+      {
+        "id": "oc_e73a970894b66e12fef4727768d592fd",
+        "name": "八字出海",
+        "type": "group",
+        "thread_id": null
+      },
+      {
+        "id": "oc_47168d6fd212027683aed7339b9356bc:om_x100b6dd482787484c24271c37860278",
+        "name": "oc_47168d6fd212027683aed7339b9356bc / topic om_x100b6dd482787484c24271c37860278",
+        "type": "dm",
+        "thread_id": "om_x100b6dd482787484c24271c37860278"
+      },
+      {
+        "id": "oc_47168d6fd212027683aed7339b9356bc:omt_194b8402798d5b88",
+        "name": "oc_47168d6fd212027683aed7339b9356bc / topic omt_194b8402798d5b88",
+        "type": "dm",
+        "thread_id": "omt_194b8402798d5b88"
+      }
+    ],
+    "wecom": [],
+    "wecom_callback": [],
+    "weixin": [],
+    "bluebubbles": [],
+    "qqbot": [],
+    "yuanbao": [],
+    "google_chat": [],
+    "irc": [],
+    "line": [],
+    "simplex": [],
+    "teams": []
+  }
+}

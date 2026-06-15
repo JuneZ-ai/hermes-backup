@@ -8,6 +8,57 @@ description: "Use when first setting up lark-cli, running auth login, switching 
 
 本技能指导你如何通过lark-cli操作飞书资源, 以及有哪些注意事项。
 
+## 安装
+
+### 标准安装
+
+```bash
+npm install -g @larksuite/cli
+```
+
+### 已知陷阱：npm postinstall 超时
+
+`npm install -g @larksuite/cli` 的 postinstall 脚本会从 GitHub Release 下载二进制文件。在 GitHub 连通性差的环境中，下载会超时（SIGTERM），导致安装失败。
+
+**典型症状：** 安装日志末尾出现 `signal SIGTERM` / `command sh -c node scripts/install.js`
+
+**排查顺序：**
+1. 先尝试 `npm install -g @larksuite/cli`（有时是临时网络波动，重试即可）
+2. 如果失败，用 `npm install -g @larksuite/cli --ignore-scripts` 跳过 postinstall
+3. 从 npmmirror 镜像手动下载 Linux amd64 二进制：
+
+```bash
+VERSION=1.0.52
+curl -sL "https://registry.npmmirror.com/-/binary/lark-cli/v${VERSION}/lark-cli-${VERSION}-linux-amd64.tar.gz" -o /tmp/lark-cli.tar.gz
+BINDIR="/home/hermes/.npm-global/lib/node_modules/@larksuite/cli/bin"
+mkdir -p "$BINDIR"
+tar -xzf /tmp/lark-cli.tar.gz -C /tmp/
+cp /tmp/lark-cli "$BINDIR/lark-cli"
+chmod 755 "$BINDIR/lark-cli"
+rm /tmp/lark-cli.tar.gz /tmp/lark-cli 2>/dev/null
+```
+
+4. 确保二进制在 PATH 中（如果 ~/.npm-global/bin 不在 PATH 里，复制到可见目录）：
+
+```bash
+cp "$BINDIR/lark-cli" "/home/hermes/.hermes/profiles/junis/home/.npm-global/bin/lark-cli"
+lark-cli --version
+```
+
+5. 验证后，进入下方的「配置初始化」完成绑定。
+
+### bot 身份上传文件的权限坑
+
+用 bot 身份（`--as bot` 或默认）上传文件到云盘时，文件归属 bot，**不会自动授予当前用户权限**。上传命令输出会提示：
+
+```
+Warning: resource was created with bot identity, but no current user open_id is configured, so auto-grant was skipped.
+```
+
+用户直接打开链接会提示无权限。解决方式：
+- 上传后用 `drive permission.members create` API 手动授予权限
+- 或者用户先在飞书完成 `lark-cli auth login`，后续上传会自动授予
+
 ## 配置初始化
 
 ### 方式一：首次全新配置
