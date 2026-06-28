@@ -1,7 +1,4 @@
-model:
-  default: deepseek-v4-flash
-  provider: deepseek
-  api_key_env: DEEPSEEK_API_KEY
+model: deepseek-v4-flash
 providers:
   deepseek:
     api_key_env: DEEPSEEK_API_KEY
@@ -9,11 +6,23 @@ providers:
     models:
     - deepseek-v4-flash
     - deepseek-v4-pro
-  stepfun:
-    api_key_env: STEPFUN_API_KEY
-    base_url: https://api.stepfun.com/v1
+  nvidia:
+    api_key_env: NVIDIA_API_KEY
+    base_url: https://integrate.api.nvidia.com/v1
     models:
-    - step-3.5-flash
+    - deepseek-ai/deepseek-v4-flash
+    - deepseek-ai/deepseek-v4-pro
+    - meta/llama-4-maverick-17b-128e-instruct
+    - meta/llama-3.3-70b-instruct
+    - meta/llama-3.1-70b-instruct
+    - meta/llama-3.2-90b-vision-instruct
+    - mistralai/mistral-large
+    - mistralai/mistral-small-4-119b-2603
+    - qwen/qwen3.5-122b-a10b
+    - qwen/qwen3.5-397b-a17b
+    - qwen/qwen3-coder-480b-a35b-instruct
+    - stepfun-ai/step-3.7-flash
+    - nvidia/llama-3.3-nemotron-super-49b-v1.5
   dashscope:
     api_key_env: DASHSCOPE_API_KEY
     base_url: https://dashscope.aliyuncs.com/compatible-mode/v1
@@ -21,33 +30,63 @@ providers:
     - qwen3.7-max
     - qwen3.7-plus
     - qwen3.7-omni-plus
+  stepfun:
+    api_key_env: STEPFUN_API_KEY
+    base_url: https://api.stepfun.com/v1
+    models:
+    - step-3.5-flash
+    - step-3.7-flash
 fallback_providers:
-- provider: deepseek
-  models:
-  - deepseek-v4-pro
-  activation:
-    mode: sequential
+- activation:
     min_priority: 1
+    mode: sequential
+  models:
+  - deepseek-ai/deepseek-v4-flash
+  provider: nvidia
+- activation:
+    min_priority: 2
+    mode: sequential
+  models:
+  - deepseek-ai/deepseek-v4-pro
+  provider: nvidia
+- activation:
+    min_priority: 3
+    mode: sequential
+  models:
+  - qwen3.7-max
+  provider: dashscope
+- activation:
+    min_priority: 4
+    mode: sequential
+  models:
+  - step-3.5-flash
+  provider: stepfun
+- activation:
+    min_priority: 5
+    mode: sequential
+  models:
+  - meta/llama-3.3-70b-instruct
+  provider: nvidia
 credential_pool_strategies: {}
 toolsets:
 - hermes-cli
 agent:
   max_turns: 90
   gateway_timeout: 1800
-  restart_drain_timeout: 180
-  api_max_retries: 3
+  restart_drain_timeout: 1800
+  api_max_retries: 2
   service_tier: ''
   tool_use_enforcement: auto
   gateway_timeout_warning: 900
   clarify_timeout: 600
-  gateway_notify_interval: 180
+  gateway_notify_interval: 1800
   gateway_auto_continue_freshness: 3600
   image_input_mode: auto
   disabled_toolsets: []
 terminal:
   backend: local
   modal_mode: auto
-  cwd: .
+  cwd: /mnt/c/Users/18502
   timeout: 180
   env_passthrough: []
   shell_init_files: []
@@ -70,7 +109,7 @@ terminal:
   persistent_shell: true
 web:
   backend: ''
-  search_backend: tavily
+  search_backend: ''
   extract_backend: ''
 browser:
   inactivity_timeout: 120
@@ -138,9 +177,9 @@ bedrock:
     trace: disabled
 auxiliary:
   vision:
-    provider: dashscope
-    model: qwen3.7-plus
-    base_url: https://dashscope.aliyuncs.com/compatible-mode/v1
+    provider: auto
+    model: ''
+    base_url: ''
     api_key: ''
     timeout: 120
     extra_body: {}
@@ -225,7 +264,7 @@ display:
   inline_diffs: true
   file_mutation_verifier: true
   show_cost: false
-  skin: default
+  skin: slate
   language: en
   tui_status_indicator: kaomoji
   user_message_preview:
@@ -303,7 +342,7 @@ memory:
   user_profile_enabled: true
   memory_char_limit: 2200
   user_char_limit: 1375
-  provider: ''
+  provider: agentmemory
 delegation:
   model: ''
   provider: ''
@@ -378,11 +417,10 @@ approvals:
 command_allowlist:
 - recursive delete
 - script execution via -e/-c flag
-- overwrite system file via redirection
-- SQL DELETE without WHERE
-- overwrite project env/config via redirection
-- script execution via heredoc
 - stop/restart system service
+- pipe remote content to shell
+- stop/restart hermes gateway (kills running agents)
+- script execution via heredoc
 - delete in root path
 quick_commands: {}
 hooks: {}
@@ -418,20 +456,7 @@ model_catalog:
   enabled: true
   url: https://hermes-agent.nousresearch.com/docs/api/model-catalog.json
   ttl_hours: 24
-  providers:
-    deepseek:
-      api_key_env: DEEPSEEK_API_KEY
-      base_url: https://api.deepseek.com
-      models:
-      - deepseek-v4-flash
-      - deepseek-v4-pro
-    stepfun:
-      api_key_env: STEPFUN_API_KEY
-      base_url: https://api.stepfun.com/v1
-      models:
-      - step-3.5-flash
-      - step-3.7-flash
-      - step-3.5-flash-2603
+  providers: {}
 network:
   force_ipv4: false
 sessions:
@@ -441,8 +466,8 @@ sessions:
   min_interval_hours: 24
 onboarding:
   seen:
-    openclaw_residue_cleanup: true
     busy_input_prompt: true
+    openclaw_residue_cleanup: true
     tool_progress_prompt: true
 updates:
   pre_update_backup: false
@@ -458,50 +483,22 @@ x_search:
   timeout_seconds: 180
   retries: 2
 _config_version: 23
-session_reset:
-  mode: both
-  idle_minutes: 1440
-  at_hour: 4
 mcp_servers:
-  filesystem:
+  codegraph:
     command: npx
     args:
     - -y
-    - '@modelcontextprotocol/server-filesystem'
-    - /home/hermes
-  github:
-    command: npx
+    - '@colbymchenry/codegraph'
+    timeout: 120
+    connect_timeout: 60
+  agentmemory:
+    command: /home/hermes/.npm-global/bin/agentmemory
     args:
-    - -y
-    - '@modelcontextprotocol/server-github'
-    env:
-      GITHUB_PERSONAL_ACCESS_TOKEN: ghp_wr...d1XQ
-  tavily:
-    command: npx
-    args:
-    - -y
-    - tavily-mcp@latest
-    env:
-      TAVILY_API_KEY: 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
-
-# ── Fallback Model ────────────────────────────────────────────────────
-# Automatic provider failover when primary is unavailable.
-# Uncomment and configure to enable. Triggers on rate limits (429),
-# overload (529), service errors (503), or connection failures.
-#
-# Supported providers:
-#   openrouter   (OPENROUTER_API_KEY)  — routes to any model
-#   openai-codex (OAuth — hermes auth) — OpenAI Codex
-#   nous         (OAuth — hermes auth) — Nous Portal
-#   zai          (ZAI_API_KEY)         — Z.AI / GLM
-#   kimi-coding  (KIMI_API_KEY)        — Kimi / Moonshot
-#   kimi-coding-cn (KIMI_CN_API_KEY)   — Kimi / Moonshot (China)
-#   minimax      (MINIMAX_API_KEY)     — MiniMax
-#   minimax-cn   (MINIMAX_CN_API_KEY)  — MiniMax (China)
-#   bedrock      (AWS IAM / boto3)     — AWS Bedrock (Converse API)
-#
-# For custom OpenAI-compatible endpoints, add base_url and key_env.
-#
-# fallback_model:
-#   provider: openrouter
-#   model: anthropic/claude-sonnet-4
+    - mcp
+    timeout: 30
+    connect_timeout: 30
+session_reset:
+  at_hour: 4
+  idle_minutes: 1440
+  mode: both
+provider: deepseek

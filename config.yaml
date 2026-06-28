@@ -67,7 +67,7 @@ auxiliary:
     base_url: ''
     extra_body: {}
     model: ''
-    provider: auto
+    provider: deepseek
     timeout: 30
   triage_specifier:
     api_key: ''
@@ -262,8 +262,12 @@ mcp_servers:
     - /home/hermes/.local/bin/firecrawl-mcp.sh
     command: bash
     env:
-      FIRECRAWL_API_KEY: fc-cbe022010a744db6a95d9aa4f021c72b
+      FIRECRAWL_API_KEY: fc-cbe...c72b
     timeout: 60
+  codebase-memory-mcp:
+    command: /home/hermes/.local/bin/codebase-memory-mcp
+    timeout: 120
+    connect_timeout: 60
   hybrid-memory:
     args:
     - /home/hermes/.hermes/profiles/yanqing/scripts/hybrid-memory/mcp_server.py
@@ -447,3 +451,10 @@ x_search:
   model: grok-4.20-reasoning
   retries: 2
   timeout_seconds: 180
+
+mcp_servers:
+  codegraph:
+    command: "npx"
+    args: ["-y", "@colbymchenry/codegraph"]
+    timeout: 120
+    connect_timeout: 60

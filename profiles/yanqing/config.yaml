@@ -1,21 +1,48 @@
 model:
-  default: deepseek-v4-flash
-  provider: deepseek
-  api_key_env: DEEPSEEK_API_KEY
+  default: openrouter/free
+  provider: openrouter
+  api_key_env: OPENROUTER_API_KEY
 providers:
-  deepseek:
-    api_key_env: DEEPSEEK_API_KEY
-    base_url: https://api.deepseek.com
+  openrouter:
+    api_key_env: OPENROUTER_API_KEY
+    base_url: https://openrouter.ai/api/v1
     models:
-    - deepseek-v4-flash
-    - deepseek-v4-pro
+    - openrouter/free
+    - cognitivecomputations/dolphin-mistral-24b-venice-edition:free
+    - nvidia/nemotron-3-nano-30b-a3b:free
+    - qwen/qwen3-coder:free
+    - google/gemma-4-26b-a4b-it:free
+    - nvidia/nemotron-3-ultra:free
+  nvidia:
+    api_key_env: NVIDIA_API_KEY
+    base_url: https://integrate.api.nvidia.com/v1
+    models:
+    - meta/llama-4-maverick-17b-128e-instruct
+    - meta/llama-3.3-70b-instruct
+    - mistralai/mistral-small-4-119b-2603
+  siliconflow:
+    api_key_env: SILICONFLOW_API_KEY
+    base_url: https://api.siliconflow.cn/v1
+    models:
+    - Qwen/Qwen3.5-27B
+    - Qwen/Qwen3.5-35B-A3B
+    - stepfun-ai/Step-3.5-Flash
+    - THUDM/GLM-4-9B-Chat
 fallback_providers:
-- provider: deepseek
+- provider: openrouter
   models:
-  - deepseek-v4-pro
+  - openrouter/free
+  - nvidia/nemotron-3-ultra:free
   activation:
     mode: sequential
     min_priority: 1
+- provider: nvidia
+  models:
+  - meta/llama-4-maverick-17b-128e-instruct
+  - meta/llama-3.3-70b-instruct
+  activation:
+    mode: sequential
+    min_priority: 2
 credential_pool_strategies: {}
 toolsets:
 - hermes-cli
@@ -371,10 +398,11 @@ approvals:
   mcp_reload_confirm: true
   destructive_slash_confirm: true
 command_allowlist:
-- overwrite project env/config via redirection
+- delete in root path
 - SQL DELETE without WHERE
 - script execution via -e/-c flag
-- delete in root path
+- stop/restart system service
+- overwrite project env/config via redirection
 quick_commands: {}
 hooks: {}
 hooks_auto_accept: false

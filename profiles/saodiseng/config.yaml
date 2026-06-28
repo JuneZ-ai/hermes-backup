@@ -1,33 +1,98 @@
 model:
-  default: deepseek-v4-flash
-  provider: deepseek
-  api_key_env: DEEPSEEK_API_KEY
+  default: qwen/qwen3.5-122b-a10b
+  provider: nvidia
+  api_key_env: NVIDIA_API_KEY
 providers:
-  deepseek:
-    api_key_env: DEEPSEEK_API_KEY
-    base_url: https://api.deepseek.com
+  nvidia:
+    api_key_env: NVIDIA_API_KEY
+    base_url: https://integrate.api.nvidia.com/v1
     models:
-    - deepseek-v4-flash
-    - deepseek-v4-pro
-  stepfun:
-    api_key_env: STEPFUN_API_KEY
-    base_url: https://api.stepfun.com/v1
+    - deepseek-ai/deepseek-v4-flash
+    - deepseek-ai/deepseek-v4-pro
+    - meta/llama-4-maverick-17b-128e-instruct
+    - meta/llama-3.3-70b-instruct
+    - meta/llama-3.1-70b-instruct
+    - stepfun-ai/step-3.7-flash
+    - qwen/qwen3.5-122b-a10b
+    - qwen/qwen3.5-397b-a17b
+    - moonshotai/kimi-k2.6
+    - z-ai/glm-5.1
+    - minimaxai/minimax-m3
+    - minimaxai/minimax-m2.7
+    - nvidia/llama-3.3-nemotron-super-49b-v1.5
+  chatanywhere:
+    api_key_env: CHATANYWHERE_API_KEY
+    base_url: https://api.chatanywhere.tech/v1
     models:
-    - step-3.5-flash
+    - gpt-4o-mini
+    - deepseek-chat
+    - gpt-3.5-turbo
+  openrouter:
+    api_key_env: OPENROUTER_API_KEY
+    base_url: https://openrouter.ai/api/v1
+    models:
+    - cognitivecomputations/dolphin-mistral-24b-venice-edition:free
+    - nvidia/nemotron-3-nano-30b-a3b:free
+    - nvidia/nemotron-3-nano-omni-30b-a3b-reasoning:free
+    - qwen/qwen3-coder:free
+    - google/gemma-4-26b-a4b-it:free
+    - liquid/lfm-2.5-1.2b-instruct:free
+    - openai/gpt-oss-120b:free
+  siliconflow:
+    api_key_env: SILICONFLOW_API_KEY
+    base_url: https://api.siliconflow.cn/v1
+    models:
+    - deepseek-ai/DeepSeek-V4-Flash
+    - deepseek-ai/DeepSeek-V4-Pro
+    - Qwen/Qwen3.5-27B
+    - Qwen/Qwen3.5-35B-A3B
+    - THUDM/GLM-4-9B-Chat
+    - stepfun-ai/Step-3.5-Flash
 fallback_providers:
-- provider: deepseek
+- provider: nvidia
   models:
-  - deepseek-v4-pro
+  - moonshotai/kimi-k2.6
+  - z-ai/glm-5.1
+  - minimaxai/minimax-m3
+  - minimaxai/minimax-m2.7
+  - qwen/qwen3.5-122b-a10b
+  - qwen/qwen3.5-397b-a17b
+  - meta/llama-4-maverick-17b-128e-instruct
+  - nvidia/llama-3.3-nemotron-super-49b-v1.5
+  - meta/llama-3.3-70b-instruct
+  - meta/llama-3.1-70b-instruct
   activation:
     mode: sequential
     min_priority: 1
+- provider: openrouter
+  models:
+  - cognitivecomputations/dolphin-mistral-24b-venice-edition:free
+  - qwen/qwen3-coder:free
+  - google/gemma-4-26b-a4b-it:free
+  - nvidia/nemotron-3-nano-30b-a3b:free
+  - openai/gpt-oss-120b:free
+  - liquid/lfm-2.5-1.2b-instruct:free
+  activation:
+    mode: sequential
+    min_priority: 1
+- provider: siliconflow
+  models:
+  - deepseek-ai/DeepSeek-V4-Flash
+  - Qwen/Qwen3.5-27B
+  - Qwen/Qwen3.5-35B-A3B
+  - stepfun-ai/Step-3.5-Flash
+  - THUDM/GLM-4-9B-Chat
+  activation:
+    mode: sequential
+    min_priority: 1
+credential_pool_strategies: {}
 toolsets:
 - hermes-cli
 agent:
   max_turns: 90
   gateway_timeout: 1800
   restart_drain_timeout: 180
-  api_max_retries: 3
+  api_max_retries: 2
   service_tier: ''
   tool_use_enforcement: auto
   gateway_timeout_warning: 900
@@ -36,9 +101,7 @@ agent:
   gateway_auto_continue_freshness: 3600
   image_input_mode: auto
   disabled_toolsets:
-  - terminal
   - browser
-  - code_execution
   - delegation
   - cronjob
   - tts
@@ -380,7 +443,10 @@ approvals:
   cron_mode: deny
   mcp_reload_confirm: true
   destructive_slash_confirm: true
-command_allowlist: []
+command_allowlist:
+- script execution via heredoc
+- script execution via -e/-c flag
+- stop/restart system service
 quick_commands: {}
 hooks: {}
 hooks_auto_accept: false
@@ -467,3 +533,25 @@ platform_toolsets:
 known_plugin_toolsets:
   cli:
   - spotify
+
+# ── Fallback Model ────────────────────────────────────────────────────
+# Automatic provider failover when primary is unavailable.
+# Uncomment and configure to enable. Triggers on rate limits (429),
+# overload (529), service errors (503), or connection failures.
+#
+# Supported providers:
+#   openrouter   (OPENROUTER_API_KEY)  — routes to any model
+#   openai-codex (OAuth — hermes auth) — OpenAI Codex
+#   nous         (OAuth — hermes auth) — Nous Portal
+#   zai          (ZAI_API_KEY)         — Z.AI / GLM
+#   kimi-coding  (KIMI_API_KEY)        — Kimi / Moonshot
+#   kimi-coding-cn (KIMI_CN_API_KEY)   — Kimi / Moonshot (China)
+#   minimax      (MINIMAX_API_KEY)     — MiniMax
+#   minimax-cn   (MINIMAX_CN_API_KEY)  — MiniMax (China)
+#   bedrock      (AWS IAM / boto3)     — AWS Bedrock (Converse API)
+#
+# For custom OpenAI-compatible endpoints, add base_url and key_env.
+#
+# fallback_model:
+#   provider: openrouter
+#   model: anthropic/claude-sonnet-4

@@ -1,23 +1,24 @@
 model:
-  default: deepseek-v4-flash
-  provider: deepseek
-  api_key_env: DEEPSEEK_API_KEY
+  default: step-3.5-flash
+  provider: stepfun
+  api_key_env: STEPFUN_API_KEY
 providers:
-  deepseek:
-    api_key_env: DEEPSEEK_API_KEY
-    base_url: https://api.deepseek.com
-    models:
-    - deepseek-v4-flash
-    - deepseek-v4-pro
   stepfun:
     api_key_env: STEPFUN_API_KEY
     base_url: https://api.stepfun.com/v1
     models:
     - step-3.5-flash
+  nvidia:
+    api_key_env: NVIDIA_API_KEY
+    base_url: https://integrate.api.nvidia.com/v1
+    models:
+    - meta/llama-3.3-70b-instruct
+    - nvidia/llama-3.3-nemotron-super-49b-v1.5
 fallback_providers:
-- provider: deepseek
+- provider: nvidia
   models:
-  - deepseek-v4-pro
+  - meta/llama-3.3-70b-instruct
+  - nvidia/llama-3.3-nemotron-super-49b-v1.5
   activation:
     mode: sequential
     min_priority: 1
@@ -452,8 +453,8 @@ mcp_servers:
   obsidian:
     url: http://172.24.0.1:27201/mcp
     headers:
-      Authorization: Bearer ${MCP_...KEY}
-    enabled: true
+      Authorization: Bearer ***
+    enabled: false
 
 # ── Fallback Model ────────────────────────────────────────────────────
 # Automatic provider failover when primary is unavailable.
